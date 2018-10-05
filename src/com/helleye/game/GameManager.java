@@ -18,6 +18,7 @@ public class GameManager implements IGame {
 	private SoundClip clip;
 	private ImageTile fighterImage;
 	private Image mouseImage;
+	private ImageTile laserShot;
 	
 	public GameManager() {
 		mouseImage = new Image("/TestHeartTransparent.png");
@@ -27,7 +28,7 @@ public class GameManager implements IGame {
 		ec = new EntityController(this);
 		//SPEED: speed/60 pixels per frame
 		ec.setPlayer(new EntityPlayer(10, 10, fighterImage.getTileW(), fighterImage.getTileH(), fighterImage, 80, 20, 1));
-		
+		ec.getPlayer().setAnimSpeed(10);
 	}
 	
 	public static void main(String[] args) {
@@ -35,8 +36,7 @@ public class GameManager implements IGame {
 		GameContainer gc = new GameContainer(new GameManager());
 		gc.start();
 	}
-
-
+	
 	@Override
 	public void update(GameContainer gc, float deltaT) { //deltaT = 1/60 s
 		//put controls here
@@ -49,17 +49,20 @@ public class GameManager implements IGame {
 			ec.handlePlayerEvent(EntityController.PlayerAction.UP);
 		if (gc.getInput().isKey(KeyEvent.VK_S))
 			ec.handlePlayerEvent(EntityController.PlayerAction.DOWN);
-		temp+=deltaT*20;
-		if(temp>3) {
-			for (EntityBase entity : ec.getList())
-				entity.update();
-			temp=0;
-		}
+		if (gc.getInput().isKeyDown(KeyEvent.VK_SPACE))
+			ec.handlePlayerEvent(EntityController.PlayerAction.SHOOT);
+		
+		for (EntityBase entity : ec.getList())
+			entity.update(ec);
+		
+		ec.getList().removeAll(ec.getToRemove());
+		ec.getToRemove().clear();
 	}
 	
 	@Override
 	public void render(GameContainer gc, Renderer renderer) {
-		renderer.addImage(ec.getPlayer(), 5);
+		for (EntityBase entity : ec.getList())
+			renderer.addImage(entity, 5);
 		
 		for (int i = 0; i < 13; i++)
 			for (int j = 0; j < 12; j++) {

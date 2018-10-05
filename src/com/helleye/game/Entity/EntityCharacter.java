@@ -2,6 +2,7 @@ package com.helleye.game.Entity;
 
 import com.helleye.engine.gfx.Image;
 import com.helleye.engine.gfx.ImageTile;
+import com.helleye.game.controls.EntityController;
 
 public class EntityCharacter extends EntityBase {
 	private int health, damage;
@@ -11,6 +12,10 @@ public class EntityCharacter extends EntityBase {
 		super(xPos, yPos, width, height, image, speed);
 		this.health = health;
 		this.damage = damage;
+	}
+	
+	public EntityProjectile shoot(){
+		return EntityProjectile.createProjectile(this, 2, 10, 120);
 	}
 	
 	@Override
@@ -37,8 +42,8 @@ public class EntityCharacter extends EntityBase {
 	}
 	
 	@Override
-	public void update() {
-		super.update();
+	public void update(EntityController controller) {
+		super.update(controller);
 		//TODO update stuffff
 	}
 }

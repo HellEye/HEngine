@@ -2,6 +2,7 @@ package com.helleye.game.Entity;
 
 import com.helleye.engine.gfx.Image;
 import com.helleye.engine.gfx.ImageTile;
+import com.helleye.game.controls.EntityController;
 
 public abstract class EntityBase {
 	private final static int SPEED_PPF = 60;
@@ -12,6 +13,7 @@ public abstract class EntityBase {
 	private Facing facing = Facing.UP;
 	private int speed;
 	private Image image;
+	private int animSpeed=1, animBuffer=0;
 	private int frame;
 	private int frameAmount;
 	private int speedBufferX, speedBufferY;
@@ -100,6 +102,7 @@ public abstract class EntityBase {
 		this.image = image;
 		if (image instanceof ImageTile)
 			frameAmount = image.getHeight() / ((ImageTile) image).getTileH();
+		if(frameAmount<1) frameAmount=1;
 	}
 	
 	public boolean isColiding(EntityBase entity) {
@@ -142,9 +145,12 @@ public abstract class EntityBase {
 	public void setHeight(int height) {
 		this.height = height;
 	}
-	
-	public void update() {
-		frame = (frame + 1) % frameAmount;
+	public void setAnimSpeed(int animSpeed){
+		this.animSpeed=animSpeed;
+	}
+	public void update(EntityController controller) {
+		frame= (frame+(animBuffer+1)/animSpeed)%frameAmount;
+		animBuffer=(animBuffer+1)%animSpeed;
 	}
 	
 	public enum Facing {
