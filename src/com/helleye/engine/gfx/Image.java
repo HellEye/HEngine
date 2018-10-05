@@ -5,11 +5,18 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class Image extends IRenderable {
+public class Image {
 	private int width;
+	//private boolean alpha=false;
+	private int layer;
 	private int height;
 	private int[] pixels;
 	
+	public Image(int[] pixels, int width, int height) {
+		this.pixels = pixels;
+		this.width = width;
+		this.height = height;
+	}
 	public Image(String path) {
 		
 		BufferedImage image = null;
@@ -22,6 +29,14 @@ public class Image extends IRenderable {
 		height = image.getHeight();
 		pixels = image.getRGB(0, 0, width, height, null, 0, width);
 		image.flush();
+	}
+	
+	public int getLayer() {
+		return layer;
+	}
+	
+	public void setLayer(int layer) {
+		this.layer = layer;
 	}
 	
 	public int getWidth() {

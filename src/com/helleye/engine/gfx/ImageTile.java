@@ -1,7 +1,14 @@
 package com.helleye.engine.gfx;
 
-public class ImageTile extends Image implements IRenderableTile{
+public class ImageTile extends Image {
 	private int tileW;
+	private int tileH;
+	
+	public ImageTile(String path, int tileW, int tileH) {
+		super(path);
+		this.tileH = tileH;
+		this.tileW = tileW;
+	}
 	
 	public int getTileW() {
 		return tileW;
@@ -19,19 +26,11 @@ public class ImageTile extends Image implements IRenderableTile{
 		this.tileH = tileH;
 	}
 	
-	private int tileH;
-	public ImageTile(String path, int tileW, int tileH) {
-		super(path);
-		this.tileH=tileH;
-		this.tileW=tileW;
-	}
-	
-	@Override
 	public int[] getPixels(int tileX, int tileY) {
-		int[] pixels=new int[tileW*tileH];
-		for(int y=0;y<tileH;y++)
-			for(int x=0;x<tileW;x++)
-				pixels[x+y*tileW]=super.getPixels()[x+tileX*tileW+y*super.getWidth()]; //CHECKME
+		int[] pixels = new int[tileW * tileH];
+		for (int y = 0; y < tileH; y++)
+			for (int x = 0; x < tileW; x++)
+				pixels[x + y * tileW] = super.getPixels()[x + tileX * tileW + y * tileY * super.getWidth()]; //CHECKME
 		return pixels;
 	}
 }

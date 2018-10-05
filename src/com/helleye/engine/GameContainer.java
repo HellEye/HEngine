@@ -23,10 +23,10 @@ public class GameContainer implements Runnable {
 	//resolution
 	//change if lags
 	//tile dimensions 12x8
-	public final static int TILE_WIDTH = 12;
-	public final static int TILE_HEIGHT = 8;
-	public final static int P_WIDTH = 384;
-	public final static int P_HEIGHT = 256;
+	public final static int TILE_WIDTH = 52;
+	public final static int TILE_HEIGHT = 52;
+	public final static int P_WIDTH = 232;
+	public final static int P_HEIGHT = 208;
 	private float scale = 3.0F;
 	private String title = "HEngine v0.1";
 	
@@ -55,7 +55,6 @@ public class GameContainer implements Runnable {
 		renderer=new Renderer(this);
 		input =new Input(this);
 		thread = new Thread(this);
-		game.initiateRender(this, renderer);
 		thread.run();
 	}
 	
@@ -106,7 +105,8 @@ public class GameContainer implements Runnable {
 			{
 				renderer.clear();
 				game.render(this, renderer);
-				// TODO renderer.drawText("fps:"+fps, 0, 0, 0xffffff00);
+				renderer.addText("fps:"+fps, 0, 0, 0xffffff00, 100);
+				renderer.drawImageList();
 				window.update();
 				frames++;
 				
