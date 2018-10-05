@@ -4,9 +4,11 @@ import com.helleye.engine.gfx.Font;
 import com.helleye.engine.gfx.Image;
 import com.helleye.engine.gfx.ImageRequest;
 import com.helleye.engine.gfx.ImageTile;
+import com.helleye.game.Entity.EntityBase;
 
 import java.awt.image.DataBufferInt;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.TreeSet;
 
 public class Renderer {
@@ -15,8 +17,7 @@ public class Renderer {
 	private Font font;
 	private int[] zBuffer;
 	private int zDepth = 0;
-	private TreeSet<ImageRequest> imageRequests=new TreeSet<>();
-	
+	private List<ImageRequest> imageRequests = new ArrayList<>();
 	public Renderer(GameContainer gc) {
 		pWidth = GameContainer.P_WIDTH;
 		pHeight = GameContainer.P_HEIGHT;
@@ -25,17 +26,14 @@ public class Renderer {
 		zBuffer = new int[pixels.length];
 	}
 	
-	public int getzDepth() {
-		return zDepth;
-	}
 	
-	public void setzDepth(int zDepth) {
-		this.zDepth = zDepth;
+	public void addImage(EntityBase entity, int layer) {
+		addImage(entity.getImage(), entity.getxPos(), entity.getyPos(), layer);
 	}
 	
 	public void clear() {
 		for (int i = 0; i < pixels.length; i++) {
-			pixels[i] = 0xff000000;
+			pixels[i] = 0xff444444;
 			zBuffer[i] = 0;
 		}
 	}
@@ -63,7 +61,7 @@ public class Renderer {
 				setPixel(x + offX, y + offY, image.getPixels()[x + y * image.getWidth()]);
 	}
 	*/
-	public void addImage(Image image, int offX, int offY, int depth){
+	public void addImage(Image image, int offX, int offY, int depth) {
 		imageRequests.add(new ImageRequest(image, depth, offX, offY));
 	}
 	
@@ -92,24 +90,24 @@ public class Renderer {
 			for (int x = newX; x < newWidth; x++)
 				setPixel(x + offX, y + offY, image.getPixels()[x + y * image.getWidth()]);
 	}
-	public void drawImageList(){
-		for(ImageRequest ir:imageRequests){
-			drawImage(ir.image, ir.offX, ir.offY);
-		}
+	
+	public void drawImageList() {
+		imageRequests.sort(null);
+		for (ImageRequest ir : imageRequests) drawImage(ir.image, ir.offX, ir.offY);
 		imageRequests.clear();
 	}
 	
 	public void addText(String text, int offX, int offY, int color, int depth) {
 		text = text.toUpperCase();
 		int offset = 0;
-		int width=font.getTextLength(text);
-		int[] pixels=new int[width*font.getHeight()];
+		int width = font.getTextLength(text);
+		int[] pixels = new int[width * font.getHeight()];
 		for (int i = 0; i < text.length(); i++) {
 			int unicode = text.codePointAt(i);
 			for (int y = 1; y < font.getFontImage().getHeight(); y++)
 				for (int x = 0; x < font.getWidths()[unicode]; x++)
 					if (font.getFontImage().getPixels()[(x + font.getOffsets()[unicode]) + y * font.getFontImage().getWidth()] == 0xffffffff) {
-						pixels[x+offset+ y*width]=color;
+						pixels[x + offset + y * width] = color;
 					}
 			offset += font.getWidths()[unicode];
 		}
@@ -139,24 +137,23 @@ public class Renderer {
 	public void addRect(int offX, int offY, int width, int height, int color, boolean filled, int depth) {
 		
 		if (filled) {
-			int[] pixels=new int[height*width];
+			int[] pixels = new int[height * width];
 			for (int y = 0; y < height; y++)
 				for (int x = 0; x < width; x++)
-					pixels[x+y*width]=color;
-					//setPixel(x + offX, y + offY, color); //CHECKME
-			addImage(new Image(pixels, width, height),offX , offY, depth);
+					pixels[x + y * width] = color;
+			//setPixel(x + offX, y + offY, color); //CHECKME
+			addImage(new Image(pixels, width, height), offX, offY, depth);
 		}
 		else {
-			int[] pixels=new int[height*width];
+			int[] pixels = new int[height * width];
 			
-			for(int y=0;y<height;y++)
-				for(int x=0;x<height;x++)
-					if(x==0||y==0||x==width-1||y==height-1)
-						pixels[x+y*width]=color;
+			for (int y = 0; y < height; y++)
+				for (int x = 0; x < height; x++)
+					if (x == 0 || y == 0 || x == width - 1 || y == height - 1)
+						pixels[x + y * width] = color;
 			
-			addImage(new Image(pixels, width, height),offX , offY, depth);
+			addImage(new Image(pixels, width, height), offX, offY, depth);
 		}
 	}
-	
 	
 }

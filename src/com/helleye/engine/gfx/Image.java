@@ -35,8 +35,9 @@ public class Image {
 		return layer;
 	}
 	
-	public void setLayer(int layer) {
+	public Image setLayer(int layer) {
 		this.layer = layer;
+		return this;
 	}
 	
 	public int getWidth() {
