@@ -12,11 +12,22 @@ public class EntityController {
 	private List<EntityBase> toRemove;
 	private EntityPlayer player;
 	private GameManager gm;
+	/*
+	TODO !!!
+	keep data in array of some base object type to simplify checking for colission and speed up access to a tile with given estimate coordinates
+	(notice collisions through instanceof, with projectiles dealing damage and other things stopping movement)
+	implement a way to access game board state through the array.
+	fix projectile appearing far away from the shooter.
+	*/
 	
 	public EntityController(GameManager gm) {
 		list = new ArrayList<>();
 		toRemove = new ArrayList<>();
 		this.gm = gm;
+	}
+	
+	public void remove(EntityBase entity) {
+		toRemove.add(entity);
 	}
 	
 	public EntityPlayer getPlayer() {
@@ -28,23 +39,19 @@ public class EntityController {
 		list.add(player);
 		this.player = player;
 	}
-
-	public List<EntityBase> getToRemove() {
-		return toRemove;
-	}
 	
 	public void handlePlayerEvent(PlayerAction action) {
 		if (action == PlayerAction.UP) {
-			player.move(EntityBase.Facing.UP);
+			if (player.canMove(EntityBase.Facing.UP)) player.move(EntityBase.Facing.UP);
 		}
 		else if (action == PlayerAction.DOWN) {
-			player.move(EntityBase.Facing.DOWN);
+			if (player.canMove(EntityBase.Facing.DOWN)) player.move(EntityBase.Facing.DOWN);
 		}
 		else if (action == PlayerAction.RIGHT) {
-			player.move(EntityBase.Facing.RIGHT);
+			if (player.canMove(EntityBase.Facing.RIGHT)) player.move(EntityBase.Facing.RIGHT);
 		}
 		else if (action == PlayerAction.LEFT) {
-			player.move(EntityBase.Facing.LEFT);
+			if (player.canMove(EntityBase.Facing.LEFT)) player.move(EntityBase.Facing.LEFT);
 		}
 		else if (action == PlayerAction.SHOOT) {
 			addEntity(player.shoot());
@@ -60,6 +67,11 @@ public class EntityController {
 	
 	public List<EntityBase> getList() {
 		return list;
+	}
+	
+	public void removeAll() {
+		list.removeAll(toRemove);
+		toRemove.clear();
 	}
 	
 	public enum PlayerAction {

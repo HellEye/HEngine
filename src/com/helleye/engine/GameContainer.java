@@ -27,7 +27,7 @@ public class GameContainer implements Runnable {
 	public final static int TILE_HEIGHT = 52;
 	public final static int P_WIDTH = 232;
 	public final static int P_HEIGHT = 208;
-	private float scale = 3.0F;
+	private float scale = 4.0F;
 	private String title = "HEngine v0.1";
 	
 	public GameContainer(IGame game) {
@@ -96,7 +96,7 @@ public class GameContainer implements Runnable {
 				if (frameTime >= 1.0) {
 					frameTime = 0;
 					fps = frames;
-					System.out.println("FPS: " + frames);
+					//System.out.println("FPS: " + frames);
 					frames = 0;
 					
 				}//fps counter end

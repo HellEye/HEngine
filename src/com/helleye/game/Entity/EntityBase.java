@@ -4,7 +4,7 @@ import com.helleye.engine.gfx.Image;
 import com.helleye.engine.gfx.ImageTile;
 import com.helleye.game.controls.EntityController;
 
-public abstract class EntityBase {
+public abstract class EntityBase implements GameObject{
 	private final static int SPEED_PPF = 60;
 	private int xPos;
 	private int yPos;
@@ -13,10 +13,20 @@ public abstract class EntityBase {
 	private Facing facing = Facing.UP;
 	private int speed;
 	private Image image;
-	private int animSpeed=1, animBuffer=0;
+	private Hitbox hitbox;
+	private int animSpeed = 1, animBuffer = 0;
 	private int frame;
 	private int frameAmount;
 	private int speedBufferX, speedBufferY;
+	boolean hit=false;
+	
+	public boolean isHit() {
+		return hit;
+	}
+	
+	public void setHit(boolean hit) {
+		this.hit = hit;
+	}
 	
 	protected EntityBase(int xPos, int yPos, int width, int height, Image image, int speed) {
 		this.xPos = xPos;
@@ -25,6 +35,11 @@ public abstract class EntityBase {
 		this.height = height;
 		this.speed = speed;
 		setImage(image);
+		setHitbox(0, 0, 0, 0);
+	}
+	
+	public void setHitbox(int fromTop, int fromBot, int fromLeft, int fromRight) {
+		hitbox = new Hitbox(xPos + fromLeft, yPos + fromTop, width - fromLeft - fromRight, height - fromTop - fromBot);
 	}
 	
 	public int getFrameAmount() {
@@ -54,6 +69,7 @@ public abstract class EntityBase {
 			while (speedBufferY > SPEED_PPF) {
 				speedBufferY -= SPEED_PPF;
 				yPos++;
+				hitbox.move(facing);
 			}
 		}
 		else if (direction == Facing.UP) {
@@ -62,6 +78,7 @@ public abstract class EntityBase {
 			while (speedBufferY < -SPEED_PPF) {
 				speedBufferY += SPEED_PPF;
 				yPos--;
+				hitbox.move(facing);
 			}
 		}
 		else if (direction == Facing.RIGHT) {
@@ -70,6 +87,7 @@ public abstract class EntityBase {
 			while (speedBufferX > SPEED_PPF) {
 				speedBufferX -= SPEED_PPF;
 				xPos++;
+				hitbox.move(facing);
 			}
 		}
 		else if (direction == Facing.LEFT) {
@@ -78,6 +96,7 @@ public abstract class EntityBase {
 			while (speedBufferX < -SPEED_PPF) {
 				speedBufferX += SPEED_PPF;
 				xPos--;
+				hitbox.move(facing);
 			}
 		}
 		
@@ -102,11 +121,19 @@ public abstract class EntityBase {
 		this.image = image;
 		if (image instanceof ImageTile)
 			frameAmount = image.getHeight() / ((ImageTile) image).getTileH();
-		if(frameAmount<1) frameAmount=1;
+		if (frameAmount < 1) frameAmount = 1;
+	}
+	
+	public Hitbox getHitbox() {
+		return hitbox;
 	}
 	
 	public boolean isColiding(EntityBase entity) {
-		return (xPos <= entity.xPos + entity.width || yPos < entity.yPos + entity.height || xPos + width >= entity.xPos || yPos + height >= entity.yPos) && entity != this;
+		return (hitbox.isInHitbox(entity.hitbox) && entity != this && entity instanceof EntityProjectile) && ((EntityProjectile) entity).getShooter() != this && !(this instanceof EntityProjectile);
+	}
+	
+	public boolean canMove(Facing direction){
+		return true;
 	}
 	
 	public int getxPos() {
@@ -145,12 +172,20 @@ public abstract class EntityBase {
 	public void setHeight(int height) {
 		this.height = height;
 	}
-	public void setAnimSpeed(int animSpeed){
-		this.animSpeed=animSpeed;
+	
+	public void setAnimSpeed(int animSpeed) {
+		this.animSpeed = animSpeed;
 	}
+	
 	public void update(EntityController controller) {
-		frame= (frame+(animBuffer+1)/animSpeed)%frameAmount;
-		animBuffer=(animBuffer+1)%animSpeed;
+		frame = (frame + (animBuffer + 1) / animSpeed) % frameAmount;
+		animBuffer = (animBuffer + 1) % animSpeed;
+		for (EntityBase entity : controller.getList())
+			if (isColiding(entity)) {
+				System.out.println("HIT by " + entity.toString() + " on\n   " + this.toString());
+				hit=true;
+				if (entity instanceof EntityProjectile) controller.remove(entity);
+			}
 	}
 	
 	public enum Facing {
@@ -162,5 +197,10 @@ public abstract class EntityBase {
 		public int getColumn() {
 			return column;
 		}
+	}
+	
+	@Override
+	public String toString() {
+		return "EntityBase, this should not appear";
 	}
 }
