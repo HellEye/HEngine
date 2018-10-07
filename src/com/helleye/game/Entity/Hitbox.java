@@ -9,6 +9,12 @@ public class Hitbox {
 		this.width = width;
 		this.height = height;
 	}
+	public Hitbox(Hitbox hitbox){
+		x=hitbox.x;
+		y=hitbox.y;
+		width=hitbox.width;
+		height=hitbox.height;
+	}
 	public boolean isInHitbox(Hitbox hitbox){
 		return isInHitbox(hitbox.x, hitbox.y, hitbox.width, hitbox.height);
 	}
@@ -27,6 +33,11 @@ public class Hitbox {
 		}
 	}
 	
+	public Hitbox getOffsetHitbox(EntityBase.Facing direction){
+		Hitbox h = new Hitbox(this);
+		h.move(direction);
+		return h;
+	}
 	@Override
 	public String toString() {
 		return " x:"+x+" y:"+y+" width "+width+" height "+height;

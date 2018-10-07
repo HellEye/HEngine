@@ -41,7 +41,7 @@ public class EntityProjectile extends EntityBase {
 	@Override
 	public void update(EntityController controller) {
 		super.update(controller);
-		move(getFacing());
+		move(getFacing(), controller);
 		if(getxPos()<-16||getyPos()<-16||getxPos()> GameContainer.P_WIDTH+16||getyPos()>GameContainer.P_HEIGHT+16)
 			controller.remove(this);
 	}

@@ -9,6 +9,8 @@ import com.helleye.engine.sfx.SoundClip;
 import com.helleye.game.Entity.EntityBase;
 import com.helleye.game.Entity.EntityCharacter;
 import com.helleye.game.Entity.EntityPlayer;
+import com.helleye.game.Entity.EntityProjectile;
+import com.helleye.game.Entity.ObjectStatic;
 import com.helleye.game.controls.EntityController;
 
 import java.awt.event.KeyEvent;
@@ -31,9 +33,12 @@ public class GameManager implements IGame {
 		ec.setPlayer(new EntityPlayer(10, 10, fighterImage.getTileW(), fighterImage.getTileH(), fighterImage, 60, 20, 1));
 		ec.getPlayer().setAnimSpeed(10);
 		Image red = new Image("/SquareRed.png").setLayer(5);
-		for(int i=0;i<15;i++)
-			for(int j=0;j<15;j++)
+		for(int i=0;i<5;i++)
+			for(int j=0;j<5;j++)
 				ec.addEntity(new EntityCharacter(10*i, 10*j, 5, 5, new Image(red.getPixels(), 5, 5).setLayer(red.getLayer()), 0, 10, 0));
+		for(int i=0;i<2;i++)
+			for(int j=0;j<2;j++)
+				ec.addGameObject(new ObjectStatic(100+40*i, 100+40*j, 10, 10, new Image(red.getPixels(), 5, 5).setLayer(red.getLayer())));
 		
 		
 	}
@@ -58,17 +63,27 @@ public class GameManager implements IGame {
 			ec.handlePlayerEvent(EntityController.PlayerAction.DOWN);
 		if (gc.getInput().isKeyDown(KeyEvent.VK_SPACE))
 			ec.handlePlayerEvent(EntityController.PlayerAction.SHOOT);
+		if(gc.getInput().isKeyDown(KeyEvent.VK_P))
+			ec.handlePlayerEvent(EntityController.PlayerAction.DEBUG);
 		
-		for (EntityBase entity : ec.getList())
+		
+		for(EntityProjectile p:ec.getProjectiles())
+			p.update(ec);
+		for (EntityCharacter entity : ec.getCharacters())
 			entity.update(ec);
+		
 		
 		ec.removeAll();
 	}
 	
 	@Override
 	public void render(GameContainer gc, Renderer renderer) {
-		for (EntityBase entity : ec.getList())
+		for (EntityBase entity : ec.getCharacters())
 			renderer.addImage(entity, entity.getImage().getLayer());
+		for(EntityBase entity:ec.getProjectiles())
+			renderer.addImage(entity, entity.getImage().getLayer());
+		for(ObjectStatic object : ec.getObjects())
+			renderer.addImage(object, object.getImage().getLayer());
 		
 		for (int i = 0; i < 13; i++)
 			for (int j = 0; j < 12; j++) {

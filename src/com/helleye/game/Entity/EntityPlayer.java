@@ -10,6 +10,6 @@ public class EntityPlayer extends EntityCharacter {
 	
 	@Override
 	public String toString() {
-		return "Player with HP: "+getHealth()+" and damage "+getDamage();
+		return "Player with HP: "+getHealth()+" and damage "+getDamage()+"\n at "+xPos+", "+yPos;
 	}
 }

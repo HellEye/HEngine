@@ -4,12 +4,11 @@ import com.helleye.engine.gfx.Font;
 import com.helleye.engine.gfx.Image;
 import com.helleye.engine.gfx.ImageRequest;
 import com.helleye.engine.gfx.ImageTile;
-import com.helleye.game.Entity.EntityBase;
+import com.helleye.game.Entity.ObjectBase;
 
 import java.awt.image.DataBufferInt;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TreeSet;
 
 public class Renderer {
 	private int pWidth, pHeight;
@@ -27,7 +26,7 @@ public class Renderer {
 	}
 	
 	
-	public void addImage(EntityBase entity, int layer) {
+	public void addImage(ObjectBase entity, int layer) {
 		addImage(entity.getImage(), entity.getxPos(), entity.getyPos(), layer);
 	}
 	
