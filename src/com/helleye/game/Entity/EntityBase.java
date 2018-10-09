@@ -32,11 +32,7 @@ public abstract class EntityBase extends ObjectBase {
 	public void setFacing(Facing facing) {
 		this.facing = facing;
 	}
-	
-	public boolean move(Facing direction, EntityController ec) {
-		facing=direction;
-		
-		
+	public boolean slide(Facing direction, EntityController ec){
 		if (direction == Facing.DOWN) {
 			speedBufferY += speed;
 			while (speedBufferY > SPEED_PPF) {
@@ -46,7 +42,7 @@ public abstract class EntityBase extends ObjectBase {
 				}
 				speedBufferY -= SPEED_PPF;
 				yPos++;
-				getHitbox().move(facing);
+				getHitbox().move(Facing.DOWN);
 			}
 		}
 		else if (direction == Facing.UP) {
@@ -58,7 +54,7 @@ public abstract class EntityBase extends ObjectBase {
 				}
 				speedBufferY += SPEED_PPF;
 				yPos--;
-				getHitbox().move(facing);
+				getHitbox().move(Facing.UP);
 			}
 		}
 		else if (direction == Facing.RIGHT) {
@@ -70,7 +66,7 @@ public abstract class EntityBase extends ObjectBase {
 				}
 				speedBufferX -= SPEED_PPF;
 				xPos++;
-				getHitbox().move(facing);
+				getHitbox().move(Facing.RIGHT);
 			}
 		}
 		else if (direction == Facing.LEFT) {
@@ -82,13 +78,17 @@ public abstract class EntityBase extends ObjectBase {
 				}
 				speedBufferX += SPEED_PPF;
 				xPos--;
-				getHitbox().move(facing);
+				getHitbox().move(Facing.LEFT);
 			}
 		}
-		
-		//TODO check collision somehow? return false if colliding;
 		return true;
 	}
+	public boolean move(Facing direction, EntityController ec) {
+		facing=direction;
+		getHitbox().setFacing(direction);
+		return slide(direction, ec);
+	}
+	
 	
 	public int getSpeed() {
 		return speed;
@@ -98,7 +98,7 @@ public abstract class EntityBase extends ObjectBase {
 		this.speed = speed;
 	}
 	
-	public boolean isColiding(EntityBase entity) {
+	public boolean isColiding(ObjectBase entity) {
 		return (getHitbox().isInHitbox(entity.getHitbox()) && entity != this && entity instanceof EntityProjectile) && ((EntityProjectile) entity).getShooter() != this && !(this instanceof EntityProjectile);
 	}
 	
@@ -109,12 +109,7 @@ public abstract class EntityBase extends ObjectBase {
 	public void update(EntityController controller) {
 		frame = (frame + (animBuffer + 1) / animSpeed) % frameAmount;
 		animBuffer = (animBuffer + 1) % animSpeed;
-		for (EntityBase entity : controller.getProjectiles())
-			if (isColiding(entity)) {
-				System.out.println("HIT by " + entity.toString() + " on\n   " + this.toString());
-				hit = true;
-				controller.remove(entity);
-			}
+		
 	}
 	
 	@Override

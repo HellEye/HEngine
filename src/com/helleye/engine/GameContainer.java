@@ -2,24 +2,6 @@ package com.helleye.engine;
 
 public class GameContainer implements Runnable {
 	
-	public Window getWindow() {
-		return window;
-	}
-	private IGame game;
-	private Renderer renderer;
-	
-	public Input getInput() {
-		return input;
-	}
-	
-	private Input input;
-	private Window window;
-	private final double UPDATE_CAP = 1.0 / 60.0;
-	double frameTime = 0;
-	int frames = 0;
-	int fps = 0;
-	private Thread thread;
-	private boolean running = false;
 	//resolution
 	//change if lags
 	//tile dimensions 12x8
@@ -27,17 +9,34 @@ public class GameContainer implements Runnable {
 	public final static int TILE_HEIGHT = 52;
 	public final static int P_WIDTH = 232;
 	public final static int P_HEIGHT = 208;
+	private final double UPDATE_CAP = 1.0 / 60.0;
+	double frameTime = 0;
+	int frames = 0;
+	int fps = 0;
+	private IGame game;
+	private Renderer renderer;
+	private Input input;
+	private Window window;
+	private Thread thread;
+	private boolean running = false;
 	private float scale = 4.0F;
 	private String title = "HEngine v0.1";
-	
 	public GameContainer(IGame game) {
-	this.game=game;
+		this.game = game;
+	}
+
+	public Window getWindow() {
+		return window;
+	}
+	
+	public Input getInput() {
+		return input;
 	}
 	
 	public float getScale() {
 		return scale;
 	}
-
+	
 	public void setScale(float scale) {
 		this.scale = scale;
 	}
@@ -51,9 +50,9 @@ public class GameContainer implements Runnable {
 	}
 	
 	public void start() {
-		window=new Window(this);
-		renderer=new Renderer(this);
-		input =new Input(this);
+		window = new Window(this);
+		renderer = new Renderer(this);
+		input = new Input(this);
 		thread = new Thread(this);
 		thread.run();
 	}
@@ -61,7 +60,8 @@ public class GameContainer implements Runnable {
 	public void stop() {
 	
 	}
-	public int getFPS(){
+	
+	public int getFPS() {
 		return fps;
 	}
 	
@@ -105,7 +105,7 @@ public class GameContainer implements Runnable {
 			{
 				renderer.clear();
 				game.render(this, renderer);
-				renderer.addText("fps:"+fps, 0, 0, 0xffffff00, 1000);
+				renderer.addText("fps:" + fps, 0, 0, 0xffffff00, 1000);
 				renderer.drawImageList();
 				window.update();
 				frames++;

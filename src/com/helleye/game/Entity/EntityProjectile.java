@@ -14,10 +14,10 @@ public class EntityProjectile extends EntityBase {
 		this.damage = damage;
 		setFacing(facing);
 		if (facing.getColumn() % 2 == 0) {
-			setHitbox(3, 3, 7, 7);
+			setHitbox(3, 3, 7, 7, getFacing());
 		}
 		else {
-			setHitbox(7, 7, 3, 3);
+			setHitbox(7, 7, 3, 3, getFacing());
 		}
 		this.shooter=shooter;
 	}
@@ -44,6 +44,17 @@ public class EntityProjectile extends EntityBase {
 		move(getFacing(), controller);
 		if(getxPos()<-16||getyPos()<-16||getxPos()> GameContainer.P_WIDTH+16||getyPos()>GameContainer.P_HEIGHT+16)
 			controller.remove(this);
+		for (EntityBase entity : controller.getCharacters())
+			if (isColiding(entity)) {
+				System.out.println("HIT by " + this.toString() + " on\n   " + this.toString());
+				entity.setHit(true);
+				controller.remove(this);
+			}
+		for(ObjectStatic o : controller.getObjects())
+			if (isColiding(o)) {
+				System.out.println("HIT by " + this.toString() + " on\n   " + this.toString());
+				controller.remove(this);
+			}
 	}
 	
 	public int getDamage() {

@@ -49,9 +49,8 @@ public class EntityCharacter extends EntityBase {
 	@Override
 	public boolean canMove(Facing direction, EntityController ec) {
 		for (ObjectBase object : ec.getObjects())
-			if (object.getHitbox().isInHitbox(getHitbox().getOffsetHitbox(direction))) return false;
+			if(getHitbox().getOffsetHitbox(direction).isInHitbox(object.getHitbox())) return false;
 		return true;
-		
 	}
 	
 	@Override

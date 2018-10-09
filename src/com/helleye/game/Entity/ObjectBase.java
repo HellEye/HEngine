@@ -21,7 +21,7 @@ public abstract class ObjectBase {
 		this.width = width;
 		this.height = height;
 		setImage(image);
-		setHitbox(0, 0, 0, 0);
+		setHitbox(0, 0, 0, 0, EntityBase.Facing.UP);
 	}
 	
 	public Hitbox getHitbox() {
@@ -60,8 +60,8 @@ public abstract class ObjectBase {
 		this.animSpeed = animSpeed;
 	}
 	
-	public void setHitbox(int fromTop, int fromBot, int fromLeft, int fromRight) {
-		hitbox = new Hitbox(xPos + fromLeft, yPos + fromTop, width - fromLeft - fromRight, height - fromTop - fromBot);
+	public void setHitbox(int fromTop, int fromBot, int fromLeft, int fromRight, EntityBase.Facing facing) {
+		hitbox = new Hitbox(xPos, yPos, width, height, facing, fromTop, fromBot, fromLeft, fromRight);
 	}
 	
 	public Image getImage() {
@@ -78,6 +78,7 @@ public abstract class ObjectBase {
 	public void setPos(int xPos, int yPos) {
 		this.xPos = xPos;
 		this.yPos = yPos;
+		getHitbox().setPos(xPos, yPos);
 	}
 	
 	public int getxPos() {

@@ -8,5 +8,8 @@ public class ObjectStatic extends ObjectBase {
 		super(xPos, yPos, width, height, image);
 	}
 	
-	
+	@Override
+	public String toString() {
+		return getHitbox().toString();
+	}
 }

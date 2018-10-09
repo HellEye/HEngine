@@ -38,7 +38,7 @@ public class GameManager implements IGame {
 				ec.addEntity(new EntityCharacter(10*i, 10*j, 5, 5, new Image(red.getPixels(), 5, 5).setLayer(red.getLayer()), 0, 10, 0));
 		for(int i=0;i<2;i++)
 			for(int j=0;j<2;j++)
-				ec.addGameObject(new ObjectStatic(100+40*i, 100+40*j, 10, 10, new Image(red.getPixels(), 5, 5).setLayer(red.getLayer())));
+				ec.addGameObject(new ObjectStatic(100+40*i, 100+40*j, 10, 10, new Image(red.getPixels(), 10, 10).setLayer(red.getLayer())));
 		
 		
 	}
@@ -65,15 +65,22 @@ public class GameManager implements IGame {
 			ec.handlePlayerEvent(EntityController.PlayerAction.SHOOT);
 		if(gc.getInput().isKeyDown(KeyEvent.VK_P))
 			ec.handlePlayerEvent(EntityController.PlayerAction.DEBUG);
-		
-		
+		if(gc.getInput().isKey(KeyEvent.VK_DOWN))
+			ec.handlePlayerEvent(EntityController.PlayerAction.SDOWN);
+		if(gc.getInput().isKey(KeyEvent.VK_UP))
+			ec.handlePlayerEvent(EntityController.PlayerAction.SUP);
+		if(gc.getInput().isKey(KeyEvent.VK_LEFT))
+			ec.handlePlayerEvent(EntityController.PlayerAction.SLEFT);
+		if(gc.getInput().isKey(KeyEvent.VK_RIGHT))
+			ec.handlePlayerEvent(EntityController.PlayerAction.SRIGHT);
+		if(gc.getInput().isKeyDown(KeyEvent.VK_O))
+			ec.handlePlayerEvent(EntityController.PlayerAction.RESET);
 		for(EntityProjectile p:ec.getProjectiles())
 			p.update(ec);
 		for (EntityCharacter entity : ec.getCharacters())
 			entity.update(ec);
-		
-		
 		ec.removeAll();
+		ec.updateWindows();
 	}
 	
 	@Override

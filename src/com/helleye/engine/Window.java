@@ -8,6 +8,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class Window {
 	
@@ -17,7 +18,6 @@ public class Window {
 	
 	private JFrame frame;
 	private BufferedImage image;
-	
 	public BufferedImage getImage() {
 		return image;
 	}

@@ -5,19 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e561f0bc-b432-45bd-b3e3-86203abb8865" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/helleye/game/Entity/ObjectBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/helleye/game/Entity/ObjectStatic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/helleye/engine/utils/WindowExtra.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/helleye/engine/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/helleye/engine/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/helleye/engine/GameContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/helleye/engine/GameContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/helleye/engine/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/helleye/engine/Window.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/helleye/game/Entity/EntityBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/helleye/game/Entity/EntityBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/helleye/game/Entity/EntityCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/helleye/game/Entity/EntityCharacter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/helleye/game/Entity/EntityPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/helleye/game/Entity/EntityPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/helleye/game/Entity/EntityProjectile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/helleye/game/Entity/EntityProjectile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/helleye/game/Entity/GameObject.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/helleye/game/Entity/Hitbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/helleye/game/Entity/Hitbox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/helleye/game/Entity/ObjectBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/helleye/game/Entity/ObjectBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/helleye/game/Entity/ObjectStatic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/helleye/game/Entity/ObjectStatic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/helleye/game/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/helleye/game/GameManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/helleye/game/controls/EntityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/helleye/game/controls/EntityController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/helleye/game/state/MapState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/helleye/game/state/MapState.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -68,19 +68,20 @@
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.18" value="1" />
+          <entry key="project.open.time.22" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="18419" />
+          <entry key="java" value="22471" />
           <entry key="txt" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="18419" />
+          <entry key="JAVA" value="22471" />
           <entry key="PLAIN_TEXT" value="13" />
         </counts>
       </usages-collector>
@@ -89,55 +90,43 @@
           <entry key="Entity" value="1" />
           <entry key="JavaScript-modules-diagram/C:/Users/thehe/workspace/Java Games/HEngine/src/com/helleye" value="1" />
           <entry key="helleye" value="1" />
-          <entry key="java" value="67" />
-          <entry key="png" value="13" />
+          <entry key="java" value="78" />
+          <entry key="png" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Image" value="13" />
-          <entry key="JAVA" value="67" />
+          <entry key="Image" value="14" />
+          <entry key="JAVA" value="78" />
           <entry key="UML" value="3" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/helleye/game/Entity/ObjectBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
+            <state relative-caret-position="240">
+              <caret line="62" column="16" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="16" />
               <folding>
                 <element signature="e#629#630#0" expanded="true" />
                 <element signature="e#649#650#0" expanded="true" />
-                <element signature="e#933#934#0" expanded="true" />
-                <element signature="e#952#953#0" expanded="true" />
-                <element signature="e#881#882#0" expanded="true" />
-                <element signature="e#906#907#0" expanded="true" />
-                <element signature="e#985#986#0" expanded="true" />
-                <element signature="e#1010#1011#0" expanded="true" />
-                <element signature="e#807#808#0" expanded="true" />
-                <element signature="e#844#845#0" expanded="true" />
-                <element signature="e#1042#1043#0" expanded="true" />
-                <element signature="e#1066#1067#0" expanded="true" />
-                <element signature="e#723#724#0" expanded="true" />
-                <element signature="e#758#759#0" expanded="true" />
-                <element signature="e#1097#1098#0" expanded="true" />
-                <element signature="e#1120#1121#0" expanded="true" />
-                <element signature="e#643#644#0" expanded="true" />
                 <element signature="e#676#677#0" expanded="true" />
+                <element signature="e#695#696#0" expanded="true" />
+                <element signature="e#933#934#0" expanded="true" />
+                <element signature="e#957#958#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/helleye/game/GameManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="66" column="70" selection-start-line="66" selection-start-column="70" selection-end-line="66" selection-end-column="70" />
+            <state relative-caret-position="189">
+              <caret line="30" column="40" lean-forward="true" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -146,12 +135,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/helleye/engine/Renderer.java">
+        <entry file="file://$PROJECT_DIR$/src/com/helleye/game/controls/EntityController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
+            <state relative-caret-position="17">
+              <caret line="130" column="8" lean-forward="true" selection-start-line="130" selection-start-column="8" selection-end-line="130" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1347#1348#0" expanded="true" />
+                <element signature="e#1377#1378#0" expanded="true" />
+                <element signature="e#2134#2135#0" expanded="true" />
+                <element signature="e#2166#2167#0" expanded="true" />
+                <element signature="e#2102#2103#0" expanded="true" />
+                <element signature="e#2134#2135#0" expanded="true" />
+                <element signature="e#2170#2171#0" expanded="true" />
+                <element signature="e#2200#2201#0" expanded="true" />
+                <element signature="e#2579#2580#0" expanded="true" />
+                <element signature="e#2604#2605#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -160,8 +159,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/helleye/game/Entity/EntityBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="79" column="32" selection-start-line="79" selection-start-column="32" selection-end-line="79" selection-end-column="32" />
+            <state relative-caret-position="177">
+              <caret line="100" column="40" selection-start-line="100" selection-start-column="40" selection-end-line="100" selection-end-column="40" />
               <folding>
                 <element signature="method#isColiding#0;class#EntityBase#0" />
                 <element signature="class#Facing#0;class#EntityBase#0" />
@@ -174,42 +173,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/helleye/game/Entity/EntityCharacter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="45" column="15" selection-start-line="45" selection-start-column="15" selection-end-line="45" selection-end-column="15" />
+            <state relative-caret-position="364">
+              <caret line="51" column="85" selection-start-line="51" selection-start-column="85" selection-end-line="51" selection-end-column="85" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#536#537#0" expanded="true" />
                 <element signature="e#602#603#0" expanded="true" />
                 <element signature="e#1108#1109#0" expanded="true" />
-                <element signature="e#1140#1141#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/helleye/game/controls/EntityController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="75" column="65" selection-start-line="75" selection-start-column="65" selection-end-line="75" selection-end-column="65" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1347#1348#0" expanded="true" />
-                <element signature="e#1376#1377#0" expanded="true" />
-                <element signature="e#2447#2448#0" expanded="true" />
-                <element signature="e#2468#2469#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/helleye/engine/gfx/Image.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1147#1148#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -218,21 +189,50 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/helleye/game/Entity/EntityPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="96" selection-start-line="12" selection-start-column="96" selection-end-line="12" selection-end-column="96" />
+            <state relative-caret-position="119">
+              <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/helleye/game/Entity/Hitbox.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="277">
+              <caret line="65" column="74" selection-start-line="65" selection-start-column="74" selection-end-line="65" selection-end-column="74" />
+              <folding>
+                <element signature="e#379#380#0" expanded="true" />
+                <element signature="e#399#400#0" expanded="true" />
+                <element signature="e#310#311#0" expanded="true" />
+                <element signature="e#337#338#0" expanded="true" />
+                <element signature="method#move#0;class#Hitbox#0" />
+                <element signature="method#getOffsetHitbox#0;class#Hitbox#0" />
+                <element signature="method#getYBot#0;class#Hitbox#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/helleye/game/Entity/Hitbox.java">
+        <entry file="file://$PROJECT_DIR$/src/com/helleye/game/Entity/ObjectStatic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
+            <state relative-caret-position="119">
+              <caret line="7" column="48" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
               <folding>
-                <element signature="method#move#0;class#Hitbox#0" />
-                <element signature="e#1270#1271#0" expanded="true" />
-                <element signature="e#1333#1334#0" expanded="true" />
+                <element signature="e#285#286#0" expanded="true" />
+                <element signature="e#310#311#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/helleye/game/Entity/EntityProjectile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="816">
+              <caret line="50" column="40" lean-forward="true" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -267,6 +267,9 @@
       <find>addImage</find>
       <find>@Override</find>
       <find>hitbox.</find>
+      <find>isInHitbox(x, y) || isInHitbox(x+width, y) || isInHitbox(x, y+height) || isInHitbox(x+width, y+height) || isInHitbox(x+width/2, y) || isInHitbox(x+width/2, y+height) || isInHitbox(x+width, y+height/2) || isInHitbox(x, y+height/2)</find>
+      <find>canmo</find>
+      <find>isco</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -285,7 +288,6 @@
         <option value="$PROJECT_DIR$/src/com/helleye/engine/gfx/IRenderableTile.java" />
         <option value="$PROJECT_DIR$/src/com/helleye/engine/utils/RenderObject.java" />
         <option value="$PROJECT_DIR$/src/com/helleye/engine/gfx/ImageRect.java" />
-        <option value="$PROJECT_DIR$/src/com/helleye/engine/Window.java" />
         <option value="$PROJECT_DIR$/src/com/helleye/engine/gfx/IRenderable.java" />
         <option value="$PROJECT_DIR$/src/com/helleye/engine/test.java" />
         <option value="$PROJECT_DIR$/src/com/helleye/engine/utils/MyListIterator.java" />
@@ -300,20 +302,22 @@
         <option value="$PROJECT_DIR$/src/com/helleye/game/Entity/Player.java" />
         <option value="$PROJECT_DIR$/src/com/helleye/engine/gfx/ImageTile.java" />
         <option value="$PROJECT_DIR$/src/com/helleye/engine/gfx/ImageRequest.java" />
-        <option value="$PROJECT_DIR$/src/com/helleye/engine/GameContainer.java" />
         <option value="$PROJECT_DIR$/src/com/helleye/game/state/MapState.java" />
         <option value="$PROJECT_DIR$/src/com/helleye/engine/gfx/Image.java" />
         <option value="$PROJECT_DIR$/src/com/helleye/engine/Renderer.java" />
-        <option value="$PROJECT_DIR$/src/com/helleye/game/Entity/EntityProjectile.java" />
         <option value="$PROJECT_DIR$/src/com/helleye/game/Entity/GameObject.java" />
+        <option value="$PROJECT_DIR$/src/com/helleye/engine/Window.java" />
+        <option value="$PROJECT_DIR$/src/com/helleye/engine/GameContainer.java" />
+        <option value="$PROJECT_DIR$/src/com/helleye/engine/utils/WindowExtra.java" />
         <option value="$PROJECT_DIR$/src/com/helleye/game/Entity/ObjectStatic.java" />
-        <option value="$PROJECT_DIR$/src/com/helleye/game/Entity/EntityCharacter.java" />
-        <option value="$PROJECT_DIR$/src/com/helleye/game/Entity/Hitbox.java" />
-        <option value="$PROJECT_DIR$/src/com/helleye/game/Entity/EntityBase.java" />
-        <option value="$PROJECT_DIR$/src/com/helleye/game/Entity/ObjectBase.java" />
-        <option value="$PROJECT_DIR$/src/com/helleye/game/controls/EntityController.java" />
-        <option value="$PROJECT_DIR$/src/com/helleye/game/Entity/EntityPlayer.java" />
         <option value="$PROJECT_DIR$/src/com/helleye/game/GameManager.java" />
+        <option value="$PROJECT_DIR$/src/com/helleye/game/controls/EntityController.java" />
+        <option value="$PROJECT_DIR$/src/com/helleye/game/Entity/ObjectBase.java" />
+        <option value="$PROJECT_DIR$/src/com/helleye/game/Entity/EntityPlayer.java" />
+        <option value="$PROJECT_DIR$/src/com/helleye/game/Entity/EntityCharacter.java" />
+        <option value="$PROJECT_DIR$/src/com/helleye/game/Entity/EntityBase.java" />
+        <option value="$PROJECT_DIR$/src/com/helleye/game/Entity/EntityProjectile.java" />
+        <option value="$PROJECT_DIR$/src/com/helleye/game/Entity/Hitbox.java" />
       </list>
     </option>
   </component>
@@ -324,7 +328,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
+    <option name="x" value="489" />
+    <option name="y" value="-21" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -335,6 +340,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -363,6 +369,21 @@
               <item name="HEngine" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="helleye" type="462c0819:PsiDirectoryNode" />
+              <item name="engine" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HEngine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HEngine" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="helleye" type="462c0819:PsiDirectoryNode" />
+              <item name="engine" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HEngine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HEngine" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="helleye" type="462c0819:PsiDirectoryNode" />
               <item name="game" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -377,7 +398,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -386,7 +406,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538934030801" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539071622267" />
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -554,11 +574,12 @@
       <workItem from="1538479875663" duration="3661000" />
       <workItem from="1538507893071" duration="2046000" />
       <workItem from="1538737904613" duration="38569000" />
+      <workItem from="1539001558104" duration="16190000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106890000" />
+    <option name="totallyTimeSpent" value="123080000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -573,7 +594,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49919224" visible="true" weight="0.13752665" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49919224" visible="true" weight="0.1391258" />
       <window_info id="Structure" order="1" sideWeight="0.50080776" side_tool="true" weight="0.12473348" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -603,7 +624,7 @@
       <window_info anchor="right" id="Maven Projects" order="8" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49919224" visible="true" weight="0.13752665" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49919224" visible="true" weight="0.1391258" />
       <window_info id="Structure" order="1" sideWeight="0.50080776" side_tool="true" weight="0.12473348" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -612,7 +633,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3557484" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3557484" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39804772" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -680,8 +701,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Main.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/helleye/engine/sfx.java" />
     <entry file="file://$PROJECT_DIR$/src/com/helleye/engine/sfx/SoundClip.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -696,18 +715,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
           <caret line="95" column="17" selection-start-line="95" selection-start-column="17" selection-end-line="95" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/helleye/engine/Window.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="35" column="112" selection-start-line="35" selection-start-column="112" selection-end-line="35" selection-end-column="112" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#290#291#0" expanded="true" />
-            <element signature="e#309#310#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -789,9 +796,6 @@
     <entry file="file://$PROJECT_DIR$/res/TestHeart.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/FighterTile.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/helleye/engine/gfx/ImageRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -823,48 +827,10 @@
     <entry file="file://$PROJECT_DIR$/res/LaserShotTileBig.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/helleye/engine/GameContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="98" column="22" selection-start-line="98" selection-start-column="22" selection-end-line="98" selection-end-column="22" />
-          <folding>
-            <element signature="e#760#761#0" expanded="true" />
-            <element signature="e#780#781#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/helleye/game/state/MapState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="108" lean-forward="true" selection-start-line="10" selection-start-column="108" selection-end-line="10" selection-end-column="108" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/helleye/game/Entity/EntityProjectile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="43" column="12" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/helleye/game/Entity/ObjectStatic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="46" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/helleye/engine/gfx/Image.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -879,11 +845,12 @@
           <nodes />
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="809.0" y="435.5" />
+          <settings layout="Hierarchic Group" zoom="1.0" x="809.0" y="436.0" />
           <SelectedNodes />
           <Categories>
             <Category>All</Category>
           </Categories>
+          <SCOPE>All</SCOPE>
           <VISIBILITY>Details</VISIBILITY>
         </state>
       </provider>
@@ -904,7 +871,7 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="259.7499999999999" y="394.5" />
+          <settings layout="Hierarchic Group" zoom="1.0" x="260.0" y="395.0" />
           <SelectedNodes />
           <Categories>
             <Category>Methods</Category>
@@ -932,7 +899,7 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="57.5" y="54.0" />
+          <settings layout="Hierarchic Group" zoom="1.0" x="58.0" y="54.0" />
           <SelectedNodes />
           <Categories>
             <Category>Inner Classes</Category>
@@ -949,35 +916,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/helleye/game/Entity/Hitbox.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
-          <folding>
-            <element signature="method#move#0;class#Hitbox#0" />
-            <element signature="e#1270#1271#0" expanded="true" />
-            <element signature="e#1333#1334#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/helleye/game/Entity/EntityCharacter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="45" column="15" selection-start-line="45" selection-start-column="15" selection-end-line="45" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#536#537#0" expanded="true" />
-            <element signature="e#602#603#0" expanded="true" />
-            <element signature="e#1108#1109#0" expanded="true" />
-            <element signature="e#1140#1141#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/helleye/engine/Renderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
+        <state relative-caret-position="340">
           <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -985,10 +926,139 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/helleye/engine/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#290#291#0" expanded="true" />
+            <element signature="e#309#310#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/helleye/engine/gfx/Image.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/StringBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="134" column="25" selection-start-line="134" selection-start-column="25" selection-end-line="134" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/helleye/engine/utils/WindowExtra.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="57" column="32" selection-start-line="57" selection-start-column="32" selection-end-line="57" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#368#369#0" expanded="true" />
+            <element signature="e#387#388#0" expanded="true" />
+            <element signature="e#1648#1649#0" expanded="true" />
+            <element signature="e#1663#1664#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/helleye/engine/GameContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1018">
+          <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+          <folding>
+            <element signature="e#760#761#0" expanded="true" />
+            <element signature="e#780#781#0" expanded="true" />
+            <element signature="e#1223#1224#0" expanded="true" />
+            <element signature="e#1240#1241#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/FighterTile.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/helleye/game/Entity/ObjectStatic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="48" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
+          <folding>
+            <element signature="e#285#286#0" expanded="true" />
+            <element signature="e#310#311#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/helleye/game/GameManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="30" column="40" lean-forward="true" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/helleye/game/Entity/EntityCharacter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="51" column="85" selection-start-line="51" selection-start-column="85" selection-end-line="51" selection-end-column="85" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#536#537#0" expanded="true" />
+            <element signature="e#602#603#0" expanded="true" />
+            <element signature="e#1108#1109#0" expanded="true" />
+            <element signature="e#1147#1148#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/helleye/game/controls/EntityController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="130" column="8" lean-forward="true" selection-start-line="130" selection-start-column="8" selection-end-line="130" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1347#1348#0" expanded="true" />
+            <element signature="e#1377#1378#0" expanded="true" />
+            <element signature="e#2134#2135#0" expanded="true" />
+            <element signature="e#2166#2167#0" expanded="true" />
+            <element signature="e#2102#2103#0" expanded="true" />
+            <element signature="e#2134#2135#0" expanded="true" />
+            <element signature="e#2170#2171#0" expanded="true" />
+            <element signature="e#2200#2201#0" expanded="true" />
+            <element signature="e#2579#2580#0" expanded="true" />
+            <element signature="e#2604#2605#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/helleye/game/Entity/ObjectBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="62" column="16" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="16" />
+          <folding>
+            <element signature="e#629#630#0" expanded="true" />
+            <element signature="e#649#650#0" expanded="true" />
+            <element signature="e#676#677#0" expanded="true" />
+            <element signature="e#695#696#0" expanded="true" />
+            <element signature="e#933#934#0" expanded="true" />
+            <element signature="e#957#958#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/helleye/game/Entity/EntityBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="79" column="32" selection-start-line="79" selection-start-column="32" selection-end-line="79" selection-end-column="32" />
+        <state relative-caret-position="177">
+          <caret line="100" column="40" selection-start-line="100" selection-start-column="40" selection-end-line="100" selection-end-column="40" />
           <folding>
             <element signature="method#isColiding#0;class#EntityBase#0" />
             <element signature="class#Facing#0;class#EntityBase#0" />
@@ -997,60 +1067,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/helleye/game/Entity/ObjectBase.java">
+    <entry file="file://$PROJECT_DIR$/src/com/helleye/game/Entity/EntityProjectile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
-          <folding>
-            <element signature="e#629#630#0" expanded="true" />
-            <element signature="e#649#650#0" expanded="true" />
-            <element signature="e#933#934#0" expanded="true" />
-            <element signature="e#952#953#0" expanded="true" />
-            <element signature="e#881#882#0" expanded="true" />
-            <element signature="e#906#907#0" expanded="true" />
-            <element signature="e#985#986#0" expanded="true" />
-            <element signature="e#1010#1011#0" expanded="true" />
-            <element signature="e#807#808#0" expanded="true" />
-            <element signature="e#844#845#0" expanded="true" />
-            <element signature="e#1042#1043#0" expanded="true" />
-            <element signature="e#1066#1067#0" expanded="true" />
-            <element signature="e#723#724#0" expanded="true" />
-            <element signature="e#758#759#0" expanded="true" />
-            <element signature="e#1097#1098#0" expanded="true" />
-            <element signature="e#1120#1121#0" expanded="true" />
-            <element signature="e#643#644#0" expanded="true" />
-            <element signature="e#676#677#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/helleye/game/controls/EntityController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="75" column="65" selection-start-line="75" selection-start-column="65" selection-end-line="75" selection-end-column="65" />
+        <state relative-caret-position="816">
+          <caret line="50" column="40" lean-forward="true" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1347#1348#0" expanded="true" />
-            <element signature="e#1376#1377#0" expanded="true" />
-            <element signature="e#2447#2448#0" expanded="true" />
-            <element signature="e#2468#2469#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/helleye/game/Entity/EntityPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="96" selection-start-line="12" selection-start-column="96" selection-end-line="12" selection-end-column="96" />
+        <state relative-caret-position="119">
+          <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/helleye/game/GameManager.java">
+    <entry file="file://$PROJECT_DIR$/src/com/helleye/game/Entity/Hitbox.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="66" column="70" selection-start-line="66" selection-start-column="70" selection-end-line="66" selection-end-column="70" />
+        <state relative-caret-position="277">
+          <caret line="65" column="74" selection-start-line="65" selection-start-column="74" selection-end-line="65" selection-end-column="74" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#379#380#0" expanded="true" />
+            <element signature="e#399#400#0" expanded="true" />
+            <element signature="e#310#311#0" expanded="true" />
+            <element signature="e#337#338#0" expanded="true" />
+            <element signature="method#move#0;class#Hitbox#0" />
+            <element signature="method#getOffsetHitbox#0;class#Hitbox#0" />
+            <element signature="method#getYBot#0;class#Hitbox#0" />
           </folding>
         </state>
       </provider>
