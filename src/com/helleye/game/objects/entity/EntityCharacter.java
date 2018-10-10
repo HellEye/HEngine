@@ -1,11 +1,11 @@
-package com.helleye.game.Entity;
+package com.helleye.game.objects.entity;
 
 import com.helleye.engine.gfx.Image;
 import com.helleye.engine.gfx.ImageTile;
-import com.helleye.game.controls.EntityController;
+import com.helleye.game.controls.ObjectController;
+import com.helleye.game.objects.ObjectBase;
 
 public class EntityCharacter extends EntityBase {
-	int temp;
 	private int health, damage;
 	
 	public EntityCharacter(int xPos, int yPos, int width, int height, Image image, int speed, int health, int damage) {
@@ -42,30 +42,20 @@ public class EntityCharacter extends EntityBase {
 	}
 	
 	@Override
-	public boolean move(Facing direction, EntityController ec) {
+	public boolean move(Facing direction, ObjectController ec) {
 		return super.move(direction, ec);
 	}
 	
 	@Override
-	public boolean canMove(Facing direction, EntityController ec) {
-		for (ObjectBase object : ec.getObjects())
+	public boolean canMove(Facing direction, ObjectController ec) {
+		for (ObjectBase object : ec.getTiles())
 			if(getHitbox().getOffsetHitbox(direction).isInHitbox(object.getHitbox())) return false;
 		return true;
 	}
 	
 	@Override
-	public void update(EntityController controller) {
+	public void update(ObjectController controller) {
 		super.update(controller);
-		if (hit) {
-			getImage().setLayer(-1);
-			setHit(false);
-		}
-		else if (getImage().getLayer() == -1 && temp < 20) temp++;
-		else if (getImage().getLayer() == -1) {
-			getImage().setLayer(5);
-			temp = 0;
-		}
-		//TODO update stuffff
 	}
 	
 	@Override

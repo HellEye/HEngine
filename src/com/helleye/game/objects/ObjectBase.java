@@ -1,7 +1,11 @@
-package com.helleye.game.Entity;
+package com.helleye.game.objects;
 
 import com.helleye.engine.gfx.Image;
 import com.helleye.engine.gfx.ImageTile;
+import com.helleye.game.controls.ObjectController;
+import com.helleye.game.objects.entity.EntityProjectile;
+import com.helleye.game.objects.entity.Facing;
+import com.helleye.game.objects.tile.TileBreakable;
 
 public abstract class ObjectBase {
 	protected int xPos;
@@ -10,10 +14,15 @@ public abstract class ObjectBase {
 	protected int animBuffer = 0;
 	protected int frame;
 	protected int frameAmount;
+	boolean hit = false;
 	private Hitbox hitbox;
 	private Image image;
 	private int width;
+	private int iFrameDuration = 20;
+	private int iFrameBuffer=0;
+	private boolean invulnerable = false;
 	private int height;
+	private boolean visible = true;
 	
 	public ObjectBase(int xPos, int yPos, int width, int height, Image image) {
 		this.xPos = xPos;
@@ -21,7 +30,48 @@ public abstract class ObjectBase {
 		this.width = width;
 		this.height = height;
 		setImage(image);
-		setHitbox(0, 0, 0, 0, EntityBase.Facing.UP);
+		setHitbox(0, 0, 0, 0, Facing.UP);
+	}
+	
+	public void setHit(boolean hit) {
+		this.hit = hit;
+	}
+	
+	public boolean isColiding(ObjectBase entity) {
+		return (getHitbox().isInHitbox(entity.getHitbox()) && !(entity instanceof EntityProjectile)) && ((EntityProjectile) this).getShooter() != entity; // obsolete? && (entity != this)
+	}
+	
+	public boolean isVisible() {
+		return visible;
+	}
+	
+	public void setVisible(boolean visible) {
+		this.visible = visible;
+	}
+	
+	public void update(ObjectController ec) {
+		frame = (frame + (animBuffer + 1) / animSpeed) % frameAmount;
+		animBuffer = (animBuffer + 1) % animSpeed;
+		if(hit) {
+			setInvulnerable(true);
+			setHit(false);
+		}
+		if(invulnerable) {
+			setVisible(iFrameBuffer++ % 8 > 3);
+		}
+		if(iFrameBuffer>=iFrameDuration){
+			setVisible(true);
+			setInvulnerable(false);
+			iFrameBuffer=0;
+		}
+	}
+	
+	public void setInvulnerable(boolean invulnerable) {
+		this.invulnerable = invulnerable;
+	}
+	
+	public boolean isInvulnerable() {
+		return invulnerable;
 	}
 	
 	public Hitbox getHitbox() {
@@ -60,7 +110,7 @@ public abstract class ObjectBase {
 		this.animSpeed = animSpeed;
 	}
 	
-	public void setHitbox(int fromTop, int fromBot, int fromLeft, int fromRight, EntityBase.Facing facing) {
+	public void setHitbox(int fromTop, int fromBot, int fromLeft, int fromRight, Facing facing) {
 		hitbox = new Hitbox(xPos, yPos, width, height, facing, fromTop, fromBot, fromLeft, fromRight);
 	}
 	

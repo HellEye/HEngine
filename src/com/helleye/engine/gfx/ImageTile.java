@@ -10,6 +10,12 @@ public class ImageTile extends Image {
 		this.tileW = tileW;
 	}
 	
+	public ImageTile(ImageTile image) {
+		super(image);
+		tileW = image.tileW;
+		tileH = image.tileH;
+	}
+	
 	@Override
 	public ImageTile setLayer(int layer) {
 		super.setLayer(layer);
@@ -40,7 +46,7 @@ public class ImageTile extends Image {
 		int[] pixels = new int[tileW * tileH];
 		for (int y = 0; y < tileH; y++)
 			for (int x = 0; x < tileW; x++)
-				pixels[x + y * tileW] = super.getPixels()[(x + tileX * getTileW()) + (y + tileY * getTileH()) * getWidth()]; //FIXME
+				pixels[x + y * tileW] = super.getPixels()[(x + tileX * getTileW()) + (y + tileY * getTileH()) * getWidth()];
 		return pixels;
 	}
 }

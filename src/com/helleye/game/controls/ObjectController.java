@@ -1,27 +1,30 @@
 package com.helleye.game.controls;
 
 import com.helleye.engine.utils.WindowExtra;
-import com.helleye.game.Entity.EntityBase;
-import com.helleye.game.Entity.EntityCharacter;
-import com.helleye.game.Entity.EntityPlayer;
-import com.helleye.game.Entity.EntityProjectile;
-import com.helleye.game.Entity.ObjectBase;
-import com.helleye.game.Entity.ObjectStatic;
+import com.helleye.game.objects.entity.EntityBase;
+import com.helleye.game.objects.entity.EntityCharacter;
+import com.helleye.game.objects.entity.EntityPlayer;
+import com.helleye.game.objects.entity.EntityProjectile;
+import com.helleye.game.objects.ObjectBase;
+import com.helleye.game.objects.entity.Facing;
+import com.helleye.game.objects.tile.TileStatic;
 import com.helleye.game.GameManager;
+import com.helleye.game.state.MapState;
 import com.sun.corba.se.impl.io.TypeMismatchException;
 
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EntityController {
-	private List<ObjectStatic> objects;
+public class ObjectController {
+	private List<TileStatic> objects;
 	private List<EntityProjectile> projectiles;
 	private List<EntityCharacter> characters;
 	private List<ObjectBase> toRemove;
 	private EntityPlayer player;
 	private WindowExtra debugWindow;
 	private GameManager gm;
+	private MapState map;
 	/*
 	TODO !!!
 	keep data in array of some base object type to simplify checking for colission and speed up access to a tile with given estimate coordinates ? Maybe??
@@ -29,13 +32,18 @@ public class EntityController {
 	implement a way to access game board state through the array.
 	fix projectile appearing far away from the shooter.
 	*/
-	
-	public EntityController(GameManager gm) {
+	private final static String MAP_PATH="/map.png";
+	public ObjectController(GameManager gm) {
 		objects = new ArrayList<>();
 		projectiles = new ArrayList<>();
 		characters = new ArrayList<>();
 		toRemove = new ArrayList<>();
+		map=new MapState(MAP_PATH, this);
 		this.gm = gm;
+	}
+	
+	public void resetMap(){
+		map=new MapState(MAP_PATH, this);
 	}
 	
 	@Override
@@ -43,7 +51,7 @@ public class EntityController {
 		return super.toString();
 	}
 	
-	public void remove(EntityBase entity) {
+	public void remove(ObjectBase entity) {
 		toRemove.add(entity);
 	}
 	
@@ -81,19 +89,19 @@ public class EntityController {
 	
 	public void handlePlayerEvent(PlayerAction action) {
 		if (action == PlayerAction.UP) {
-			if (player.canMove(EntityBase.Facing.UP, this)) player.move(EntityBase.Facing.UP, this);
+			if (player.canMove(Facing.UP, this)) player.move(Facing.UP, this);
 		}
 		else if (action == PlayerAction.DOWN) {
-			if (player.canMove(EntityBase.Facing.DOWN, this))
-				player.move(EntityBase.Facing.DOWN, this);
+			if (player.canMove(Facing.DOWN, this))
+				player.move(Facing.DOWN, this);
 		}
 		else if (action == PlayerAction.RIGHT) {
-			if (player.canMove(EntityBase.Facing.RIGHT, this))
-				player.move(EntityBase.Facing.RIGHT, this);
+			if (player.canMove(Facing.RIGHT, this))
+				player.move(Facing.RIGHT, this);
 		}
 		else if (action == PlayerAction.LEFT) {
-			if (player.canMove(EntityBase.Facing.LEFT, this))
-				player.move(EntityBase.Facing.LEFT, this);
+			if (player.canMove(Facing.LEFT, this))
+				player.move(Facing.LEFT, this);
 		}
 		else if (action == PlayerAction.SHOOT) {
 			addEntity(player.shoot());
@@ -107,20 +115,20 @@ public class EntityController {
 			else deleteDebugWindow();
 		}
 		else if(action==PlayerAction.SUP){
-			if (player.canMove(EntityBase.Facing.UP, this))
-				player.slide(EntityBase.Facing.UP, this);
+			if (player.canMove(Facing.UP, this))
+				player.slide(Facing.UP, this);
 		}
 		else if(action==PlayerAction.SDOWN){
-			if (player.canMove(EntityBase.Facing.DOWN, this))
-				player.slide(EntityBase.Facing.DOWN, this);
+			if (player.canMove(Facing.DOWN, this))
+				player.slide(Facing.DOWN, this);
 		}
 		else if(action==PlayerAction.SRIGHT){
-			if (player.canMove(EntityBase.Facing.RIGHT, this))
-				player.slide(EntityBase.Facing.RIGHT, this);
+			if (player.canMove(Facing.RIGHT, this))
+				player.slide(Facing.RIGHT, this);
 		}
 		else if(action==PlayerAction.SLEFT){
-			if (player.canMove(EntityBase.Facing.LEFT, this))
-				player.slide(EntityBase.Facing.LEFT, this);
+			if (player.canMove(Facing.LEFT, this))
+				player.slide(Facing.LEFT, this);
 		}
 		else if(action==PlayerAction.RESET){
 			player.setPos(50, 50);
@@ -138,8 +146,8 @@ public class EntityController {
 	private String getDebugInfo() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(player.toString()).append("\n").append(player.getHitbox());
-		for(ObjectStatic o:getObjects())
-			sb.append(o.toString());
+//		for(TileStatic o: getTiles())
+//			sb.append(o.toString());
 		return sb.toString();
 	}
 	
@@ -147,7 +155,7 @@ public class EntityController {
 		return projectiles;
 	}
 	
-	public List<ObjectStatic> getObjects() {
+	public List<TileStatic> getTiles() {
 		return objects;
 	}
 	
@@ -162,7 +170,7 @@ public class EntityController {
 	}
 	
 	public void addGameObject(ObjectBase object) {
-		if (object instanceof ObjectStatic) objects.add((ObjectStatic) object);
+		if (object instanceof TileStatic) objects.add((TileStatic) object);
 		else throw new TypeMismatchException("No list for this type of object");
 	}
 	

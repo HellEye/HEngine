@@ -17,6 +17,7 @@ public class Image {
 		this.width = width;
 		this.height = height;
 	}
+	
 	public Image(String path) {
 		
 		BufferedImage image = null;
@@ -29,6 +30,14 @@ public class Image {
 		height = image.getHeight();
 		pixels = image.getRGB(0, 0, width, height, null, 0, width);
 		image.flush();
+	}
+	
+	public Image(Image image) {
+		pixels = new int[image.getPixels().length];
+		System.arraycopy(image.getPixels(), 0, pixels, 0, image.getPixels().length);
+		width = image.width;
+		height = image.height;
+		layer = image.layer;
 	}
 	
 	public int getLayer() {

@@ -1,4 +1,4 @@
-package com.helleye.game.Entity;
+package com.helleye.game.objects.entity;
 
 import com.helleye.engine.gfx.Image;
 

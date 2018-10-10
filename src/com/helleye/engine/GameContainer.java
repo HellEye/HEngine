@@ -2,13 +2,16 @@ package com.helleye.engine;
 
 public class GameContainer implements Runnable {
 	
-	//resolution
-	//change if lags
-	//tile dimensions 12x8
-	public final static int TILE_WIDTH = 52;
-	public final static int TILE_HEIGHT = 52;
+	//TODO migrate to javafx
+	public final static int TILE_WIDTH = 29;
+	public final static int TILE_SIZE = 8;
+	public final static int TILE_HEIGHT = 26;
 	public final static int P_WIDTH = 232;
 	public final static int P_HEIGHT = 208;
+	public final static int P_WIDTH_MENU = 80;
+	public final static int P_MENU_OFFSET = 232;
+	public static final int SCREEN_MENU = 2;
+	public static final int SCREEN_GAME = 1;
 	private final double UPDATE_CAP = 1.0 / 60.0;
 	double frameTime = 0;
 	int frames = 0;
@@ -19,12 +22,13 @@ public class GameContainer implements Runnable {
 	private Window window;
 	private Thread thread;
 	private boolean running = false;
-	private float scale = 4.0F;
+	private float scale = 3.0F;
 	private String title = "HEngine v0.1";
+	
 	public GameContainer(IGame game) {
 		this.game = game;
 	}
-
+	
 	public Window getWindow() {
 		return window;
 	}
@@ -105,7 +109,7 @@ public class GameContainer implements Runnable {
 			{
 				renderer.clear();
 				game.render(this, renderer);
-				renderer.addText("fps:" + fps, 0, 0, 0xffffff00, 1000);
+				renderer.addText("fps:" + fps, 0, 0, 0xffffff00, 1000, SCREEN_GAME);
 				renderer.drawImageList();
 				window.update();
 				frames++;

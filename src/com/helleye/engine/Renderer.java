@@ -4,7 +4,7 @@ import com.helleye.engine.gfx.Font;
 import com.helleye.engine.gfx.Image;
 import com.helleye.engine.gfx.ImageRequest;
 import com.helleye.engine.gfx.ImageTile;
-import com.helleye.game.Entity.ObjectBase;
+import com.helleye.game.objects.ObjectBase;
 
 import java.awt.image.DataBufferInt;
 import java.util.ArrayList;
@@ -14,41 +14,46 @@ public class Renderer {
 	private int pWidth, pHeight;
 	private int[] pixels;
 	private Font font;
-	private int[] zBuffer;
+	private int[] pixelsMenu;
 	private int zDepth = 0;
 	private List<ImageRequest> imageRequests = new ArrayList<>();
+	
 	public Renderer(GameContainer gc) {
 		pWidth = GameContainer.P_WIDTH;
 		pHeight = GameContainer.P_HEIGHT;
 		pixels = ((DataBufferInt) gc.getWindow().getImage().getRaster().getDataBuffer()).getData();
+		pixelsMenu = ((DataBufferInt) gc.getWindow().getMenuImage().getRaster().getDataBuffer()).getData();
 		font = new Font("/font5.png");
-		zBuffer = new int[pixels.length];
 	}
 	
-	
-	public void addImage(ObjectBase entity, int layer) {
-		addImage(entity.getImage(), entity.getxPos(), entity.getyPos(), layer);
+	public void addImage(ObjectBase entity, int layer, int screen) {
+		addImage(entity.getImage(), entity.getxPos(), entity.getyPos(), layer, screen);
 	}
 	
 	public void clear() {
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = 0xff444444;
-			zBuffer[i] = 0;
+		}
+		for(int i=0;i<pixelsMenu.length;i++){
+			pixelsMenu[i]=0xff444444;
 		}
 	}
 	
-	private void setPixel(int x, int y, int value) {
+	private void setPixel(int x, int y, int value, int screen) {
 		int alpha = ((value >> 24) & 0xff);
-		if (x >= 0 && y >= 0 && x <= pWidth && y <= pHeight && alpha != 0 && zBuffer[x + y * pWidth] <= zDepth) {
+		if (x >= 0 && y >= 0 && x <= pWidth && y <= pHeight && alpha != 0) {
 			if (alpha == 255) pixels[x + y * pWidth] = value;
 			else {
 				//Magic
-				int p = pixels[x + y * pWidth];
+				int p;
+				if (screen == GameContainer.SCREEN_GAME) p = pixels[x + y * pWidth];
+				else p = pixelsMenu[x + y * pWidth];
 				int r = (int) (((p >> 16) & 0xff) * (1 - (alpha / 255f)) + (value >> 16 & 0xff) * (alpha / 255f));
 				int g = (int) (((p >> 8) & 0xff) * (1 - (alpha / 255f)) + (value >> 8 & 0xff) * (alpha / 255f));
 				int b = (int) ((p & 0xff) * (1 - (alpha / 255f)) + (value & 0xff) * (alpha / 255f));
-				
-				pixels[x + y * pWidth] = (255 << 24 | r << 16 | g << 8 | b);
+				if (screen == GameContainer.SCREEN_GAME)
+					pixels[x + y * pWidth] = (255 << 24 | r << 16 | g << 8 | b);
+				else pixelsMenu[x + y * pWidth] = (255 << 24 | r << 16 | g << 8 | b);
 			}
 		}
 	}
@@ -60,12 +65,13 @@ public class Renderer {
 				setPixel(x + offX, y + offY, image.getPixels()[x + y * image.getWidth()]);
 	}
 	*/
-	public void addImage(Image image, int offX, int offY, int depth) {
-		imageRequests.add(new ImageRequest(image, depth, offX, offY));
+	public void addImage(Image image, int offX, int offY, int depth, int screen) {
+		imageRequests.add(new ImageRequest(image, depth, offX, offY, screen));
 	}
 	
-	private void drawImage(Image image, int offX, int offY) {
-		if (offX < -image.getWidth() || offY < -image.getHeight() || offX >= GameContainer.P_WIDTH || offY >= GameContainer.P_HEIGHT)
+	private void drawImage(Image image, int offX, int offY, int screen) {
+		
+		if (offX < -image.getWidth() || offY < -image.getHeight() || screen == GameContainer.SCREEN_GAME ? offX >= GameContainer.P_WIDTH : offX >= GameContainer.P_WIDTH_MENU || offY >= GameContainer.P_HEIGHT)
 			return; //don't render at all
 		//TODO fix crash when cutting entire image to the right
 		int newWidth = image.getWidth();
@@ -75,8 +81,10 @@ public class Renderer {
 		//cut stuff that's outside of render area
 		
 		//cut right side
-		if (newWidth + offX > GameContainer.P_WIDTH)
+		if (newWidth + offX > GameContainer.P_WIDTH && screen == GameContainer.SCREEN_GAME)
 			newWidth -= newWidth + offX - GameContainer.P_WIDTH;
+		else if (newWidth + offX > GameContainer.P_WIDTH && screen == GameContainer.SCREEN_MENU)
+			newWidth -= newWidth + offX - GameContainer.P_WIDTH_MENU;
 		//cut bottom
 		if (newHeight + offY > GameContainer.P_HEIGHT)
 			newHeight -= ((newHeight + offY) - GameContainer.P_HEIGHT);
@@ -87,16 +95,16 @@ public class Renderer {
 		
 		for (int y = newY; y < newHeight; y++)
 			for (int x = newX; x < newWidth; x++)
-				setPixel(x + offX, y + offY, image.getPixels()[x + y * image.getWidth()]);
+				setPixel(x + offX, y + offY, image.getPixels()[x + y * image.getWidth()], screen);
 	}
 	
 	public void drawImageList() {
 		imageRequests.sort(null);
-		for (ImageRequest ir : imageRequests) drawImage(ir.image, ir.offX, ir.offY);
+		for (ImageRequest ir : imageRequests) drawImage(ir.image, ir.offX, ir.offY, ir.screen);
 		imageRequests.clear();
 	}
 	
-	public void addText(String text, int offX, int offY, int color, int depth) {
+	public void addText(String text, int offX, int offY, int color, int depth, int screen) {
 		text = text.toUpperCase();
 		int offset = 0;
 		int width = font.getTextLength(text);
@@ -110,10 +118,10 @@ public class Renderer {
 					}
 			offset += font.getWidths()[unicode];
 		}
-		addImage(new Image(pixels, width, font.getHeight()), offX, offY, depth);
+		addImage(new Image(pixels, width, font.getHeight()), offX, offY, depth, screen);
 	}
 	
-	public void drawImageTile(ImageTile image, int offX, int offY, int tileX, int tileY) {
+	public void drawImageTile(ImageTile image, int offX, int offY, int tileX, int tileY, int screen) {
 		if (offX < -image.getTileW() || offY < -image.getTileH() || offX > pWidth || offY > pHeight)
 			return; //don't render at all
 		int newX = 0;
@@ -130,10 +138,10 @@ public class Renderer {
 		
 		for (int y = newY; y < newHeight; y++)
 			for (int x = newX; x < newWidth; x++)
-				setPixel(x + offX, y + offY, image.getPixels()[(x + tileX * image.getTileW()) + (y + tileY * image.getTileH()) * image.getWidth()]);
+				setPixel(x + offX, y + offY, image.getPixels()[(x + tileX * image.getTileW()) + (y + tileY * image.getTileH()) * image.getWidth()], screen);
 	}
 	
-	public void addRect(int offX, int offY, int width, int height, int color, boolean filled, int depth) {
+	public void addRect(int offX, int offY, int width, int height, int color, boolean filled, int depth, int screen) {
 		
 		if (filled) {
 			int[] pixels = new int[height * width];
@@ -141,7 +149,7 @@ public class Renderer {
 				for (int x = 0; x < width; x++)
 					pixels[x + y * width] = color;
 			//setPixel(x + offX, y + offY, color); //CHECKME
-			addImage(new Image(pixels, width, height), offX, offY, depth);
+			addImage(new Image(pixels, width, height), offX, offY, depth, screen);
 		}
 		else {
 			int[] pixels = new int[height * width];
@@ -151,7 +159,7 @@ public class Renderer {
 					if (x == 0 || y == 0 || x == width - 1 || y == height - 1)
 						pixels[x + y * width] = color;
 			
-			addImage(new Image(pixels, width, height), offX, offY, depth);
+			addImage(new Image(pixels, width, height), offX, offY, depth, screen);
 		}
 	}
 	
