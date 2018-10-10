@@ -25,6 +25,11 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener, M
 		gc.getWindow().getCanvas().addMouseListener(this);
 		gc.getWindow().getCanvas().addMouseMotionListener(this);
 		gc.getWindow().getCanvas().addMouseWheelListener(this);
+		gc.getWindow().getMenuCanvas().addKeyListener(this);
+		gc.getWindow().getMenuCanvas().addMouseListener(this);
+		gc.getWindow().getMenuCanvas().addMouseMotionListener(this);
+		gc.getWindow().getMenuCanvas().addMouseWheelListener(this);
+		
 	}
 	
 	public int getMouseX() {

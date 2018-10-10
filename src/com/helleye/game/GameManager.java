@@ -25,6 +25,7 @@ public class GameManager implements IGame {
 	private ImageTile laserShot;
 	
 	public GameManager() {
+		System.out.println("Hello world");
 		mouseImage = new Image("/TestHeartTransparent.png");
 		fighterImage = new ImageTile("/FighterTile.png", 16, 16).setLayer(5);
 		clip = new SoundClip("/Audio/pew.wav");

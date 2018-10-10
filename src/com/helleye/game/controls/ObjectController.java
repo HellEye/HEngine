@@ -27,10 +27,11 @@ public class ObjectController {
 	private MapState map;
 	/*
 	TODO !!!
-	keep data in array of some base object type to simplify checking for colission and speed up access to a tile with given estimate coordinates ? Maybe??
-	(notice collisions through instanceof, with projectiles dealing damage and other things stopping movement) ? probably not?
-	implement a way to access game board state through the array.
-	fix projectile appearing far away from the shooter.
+	Draw more graphics
+	Add more functional tiles
+	Add enemies
+	Add enemy AI
+	//FIXME make jar work
 	*/
 	private final static String MAP_PATH="/map.png";
 	public ObjectController(GameManager gm) {
@@ -131,7 +132,7 @@ public class ObjectController {
 				player.slide(Facing.LEFT, this);
 		}
 		else if(action==PlayerAction.RESET){
-			player.setPos(50, 50);
+			player.setPos(20, 20);
 		}
 		
 	}
@@ -146,8 +147,6 @@ public class ObjectController {
 	private String getDebugInfo() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(player.toString()).append("\n").append(player.getHitbox());
-//		for(TileStatic o: getTiles())
-//			sb.append(o.toString());
 		return sb.toString();
 	}
 	

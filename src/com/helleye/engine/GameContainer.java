@@ -109,7 +109,7 @@ public class GameContainer implements Runnable {
 			{
 				renderer.clear();
 				game.render(this, renderer);
-				renderer.addText("fps:" + fps, 0, 0, 0xffffff00, 1000, SCREEN_GAME);
+				renderer.addText("fps:" + fps, 0, 0, 0xff0000ff, 1000, SCREEN_GAME);
 				renderer.drawImageList();
 				window.update();
 				frames++;

@@ -51,7 +51,7 @@ public class Window {
 		canvas.setPreferredSize(dim);
 		canvas.setMaximumSize(dim);
 		canvas.setMinimumSize(dim);
-		
+		//tODO fix focusing
 		menuCanvas.setPreferredSize(dimMenu);
 		menuCanvas.setMaximumSize(dimMenu);
 		menuCanvas.setMinimumSize(dimMenu);
